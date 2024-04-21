@@ -28,7 +28,8 @@ $cie_password = "pesu@2020"
 
 # Set the URL and password for PES1UG19CS login
 $pes_login_url = "https://192.168.254.1:8090"
-$pes_password="q9mXbUy4"
+$username="Enter your srn/prn"
+$pes_password="Enter your password"
 
 # Define ANSI color codes
 $green = [char]27 + "[0;32m"
@@ -38,23 +39,6 @@ $cyan = [char]27 + "[0;36m"
 $reset = [char]27 + "[0m" # Reset color
 
 
-# Function to perform CIE login
-# function pes_login {
-#     param(
-#         [string]$password
-#     )
-#     
-#     $response = Invoke-WebRequest -Uri $pes_login_url -Method POST -Body "mode=191&username=$username&password=$username&a=1713188925839&producttype=0" -ContentType "application/x-www-form-urlencoded" -UseBasicParsing -SkipCertificateCheck
-#     $message = [regex]::Match($response.Content, '(?<=<message>).*?(?=</message>)').Value
-#
-#     if ($message -eq "<![CDATA[You are signed in as {username}]]>") {
-#         Write-Host "Successfully connected to CIE ID: $username" 
-#         warp_connect
-#         exit 0
-#     } else {
-#         Write-Host "Trying username $username" 
-#     }
-# }
 function pes_login {
     
     # $response = Invoke-WebRequest -Uri $pes_login_url -Method POST -Body "mode=191&username=$username&password=$pes_password&a=1713188925839&producttype=0" -ContentType "application/x-www-form-urlencoded" -UseBasicParsing -SkipCertificateCheck
@@ -69,7 +53,7 @@ function pes_login {
     #     Write-Host "Login unsuccessful for username $username"
     # }
     Start-Sleep -Seconds 5
-    $username="PES1202202513"
+   
     $login_url = "https://192.168.254.1:8090/login.xml"
     Write-Host "Trying username $username" 
     $payload = "mode=191&username=$username&password=$pes_password&a=1713188925839&producttype=0"
@@ -103,40 +87,15 @@ function cie_login {
         Write-Host "Trying username $username" 
     }
 }
-# Function to perform PES1UG19CS login
-# function pes_login {
-#     param(
-#         [string]$password
-#     )
-#
-#     $login_url = "https://192.168.254.1:8090/login.xml"
-#
-#     $usernames = "PES1UG22CS364"
-#     foreach ($username in $usernames) {
-#         Write-Host "Trying username $username" 
-#         $payload = "mode=191&username=$username&password=$password&a=1713188925839&producttype=0"
-#         $response = Invoke-WebRequest -Uri $login_url -Method POST -Body $payload -ContentType "application/x-www-form-urlencoded" -UseBasicParsing -SkipCertificateCheck
-#         $message = [regex]::Match($response.Content, '(?<=<message>).*?(?=</message>)').Value
-#
-#         if ($message -eq "<![CDATA[You are signed in as {username}]]>") {
-#             Write-Host "Successfully connected to PES1UG19CS ID: $username" 
-#             warp_connect
-#             exit 0
-#         } else {
-#             Write-Host ""
-#         }
-#     }
-#
-#     Write-Host "Login unsuccessful for all usernames" 
-# }
+
 
 # Check if the current hour is between 8:00 A.M. and 8:00 P.M.
-# if ($current_hour -ge 8 -and $current_hour -lt 20) {
-#     Start-Sleep -Seconds 5
-#     for ($username = 7; $username -le 60; $username++) {
-#         cie_login "CIE$(("{0:D2}" -f $username))"
-#     }
-# } else {
-#     # Perform PES1UG19CS login
+if ($current_hour -ge 8 -and $current_hour -lt 20) {
+    Start-Sleep -Seconds 5
+    for ($username = 7; $username -le 60; $username++) {
+        cie_login "CIE$(("{0:D2}" -f $username))"
+    }
+} else {
+    # Perform PES1UG19CS login
     pes_login  
-# }
+}
