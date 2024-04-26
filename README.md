@@ -7,13 +7,15 @@ This repository contains a script designed for automated login into PES-Universi
 
 ## Installation
 
-1. For bash:
+### For bash:
    ```bash
    git clone https://github.com/muniss950/PESU_AutoLogin.git
    cd PESU_AutoLogin
    ./login.sh
-2. For windows:
+
+### For windows(On Powershell 7.4.2):
    ```powershell
    git clone https://github.com/muniss950/PESU_AutoLogin.git
    cd PESU_AutoLogin
+   Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
    .\autoLog.ps1
