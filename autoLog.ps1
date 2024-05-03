@@ -1,3 +1,12 @@
+
+$username="PES1202202513"#Enter your prn/srn"
+$pes_password="q9mXbUy4"#Enter your password
+
+
+
+
+
+
 # Function to get the strongest Wi-Fi network from a given list of network SSIDs
 function Get-StrongestWiFi {
     param (
@@ -61,7 +70,7 @@ warp_disconnect > $null
 Set-NetAdapterAdvancedProperty -Name "Wi-Fi" -AllProperties -RegistryKeyword "SoftwareRadioOff" -RegistryValue "0"
 
 Start-Sleep -Seconds 1
-Netsh wlan connect ssid="PESU-Element Block" name="$networkName" 
+Netsh wlan connect ssid="$networkName" name="$networkName" 
 Start-Sleep -Seconds 1
 # Get the current hour
 $current_hour = (Get-Date).Hour
@@ -73,8 +82,6 @@ $cie_password = "pesu@2020"
 
 # Set the URL and password for PES1UG19CS login
 $pes_login_url = "https://192.168.254.1:8090"
-$username="Enter your prn/srn"
-$pes_password=""#Enter your password
 
 # Define ANSI color codes
 $green = [char]27 + "[0;32m"
@@ -150,14 +157,14 @@ function cie_login {
     }
 }
 
-
-Check if the current hour is between 8:00 A.M. and 8:00 P.M.
-if ($current_hour -ge 8 -and $current_hour -lt 20) {
-    Start-Sleep -Seconds 5
-    for ($username = 7; $username -le 60; $username++) {
-        cie_login "CIE$(("{0:D2}" -f $username))"
-    }
-} else {
+#
+# Check if the current hour is between 8:00 A.M. and 8:00 P.M.
+# if ($current_hour -ge 8 -and $current_hour -lt 20) {
+#     Start-Sleep -Seconds 5
+#     for ($username = 7; $username -le 60; $username++) {
+#         cie_login "CIE$(("{0:D2}" -f $username))"
+#     }
+# } else {
     # Perform PES1UG19CS login
     pes_login  
-}
+# }
