@@ -9,7 +9,7 @@ This repository contains a script designed for automated login into PES-Universi
 
 1. For bash:
    ```bash
-   sudo curl -sL https://github.com/aryan-212/PESU_AutoLogin/raw/main/login.sh -o /usr/local/bin/pesu && sudo chmod +x /usr/local/bin/pesu
+   sudo curl -sL https://github.com/aryan-212/PESU_AutoLogin/raw/main/Login.sh -o /usr/local/bin/pesu && sudo chmod +x /usr/local/bin/pesu
   
 2. For windows:
    ```powershell
