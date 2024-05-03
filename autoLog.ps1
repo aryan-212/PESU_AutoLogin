@@ -1,6 +1,6 @@
 
-$username="PES1202202513"#Enter your prn/srn"
-$pes_password="q9mXbUy4"#Enter your password
+$username=""#Enter your prn/srn"
+$pes_password=""#Enter your password
 
 
 
