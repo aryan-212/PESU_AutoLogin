@@ -7,23 +7,26 @@ This repository contains a script designed for automated login into PES-Universi
 
 ## Installation
 
-### For bash:
+1. For bash:
    ```bash
-   git clone https://github.com/muniss950/PESU_AutoLogin.git
-   cd PESU_AutoLogin
-   ./login.sh
-   ```
-### For windows(On Powershell 7.4.2):
-   1. Clone this repo:
+   sudo curl -sL https://github.com/aryan-212/lobster-wsl/raw/main/login.sh -o /usr/local/bin/pesu && sudo chmod +x /usr/local/bin/pesu
+  
+2. For windows:
    ```powershell
-   git clone https://github.com/muniss950/PESU_AutoLogin.git
+   git clone https://github.com/aryan-212/PESU_AutoLogin.git
    cd PESU_AutoLogin
    ```
-   2. Add this in your Powershell userprofile or execute it each time:
+   [IMP] Add this in your Powershell userprofile or execute it each time:
    ```powershell  
    Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
    ```
-   3. Run Powershell 7.4.2 in administrator mode,and run the autolog.ps1 script:
-   ```powershell
-   .\autoLog.ps1
-   ```
+
+## Usage
+1. In linux
+```bash
+   pesu
+```
+2. In windows:
+```powershell
+    .\autoLogin.ps1
+```

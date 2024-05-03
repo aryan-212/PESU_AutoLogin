@@ -52,9 +52,6 @@ cie_login() {
 pes_login() {
     local password="$1"
 
-    # Set the URL of the login page
-    login_url="https://192.168.254.1:8090/login.xml"
-
     # Loop through the provided usernames
     for username in "PES1UG19CS037" "PES1UG19CS107" "PES1UG19CS109"; do
         echo -e "${yellow}Trying username $username${reset}"  # Echo "Trying username"
@@ -62,7 +59,7 @@ pes_login() {
         payload="mode=191&username=$username&password=$password&a=1713188925839&producttype=0"
 
         # Send the POST request
-        response=$(curl -k -s -X POST -d "$payload" -H "Content-Type: application/x-www-form-urlencoded" "$login_url")
+        response=$(curl -k -s -X POST -d "$payload" -H "Content-Type: application/x-www-form-urlencoded" "$pes_login_url")
 
         # Extract the relevant information from the response
         message=$(echo "$response" | grep -oP '(?<=<message>).*?(?=</message>)')
@@ -80,8 +77,10 @@ pes_login() {
     echo -e "${red}Login unsuccessful for all usernames${reset}"
 }
 
-# Check if the current hour is between 8:00 A.M. and 8:00 P.M.
-if (( current_hour >= 8 && current_hour < 20 )); then
+current_day=$(date +%u)
+
+# Check if the current hour is between 8:00 A.M. and 8:00 P.M. and today is Sunday (7)
+if (( current_hour >= 8 && current_hour < 20 )) && (( current_day != 7 )); then
     for username in {7..60}; do
         cie_login "CIE$(printf "%02d" $username)"
     done
