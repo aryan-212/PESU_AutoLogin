@@ -15,7 +15,7 @@ yellow='\033[0;33m'
 red='\033[0;31m'
 cyan='\033[0;36m'
 reset='\033[0m' # Reset color
-
+warp-cli disconnect
 # Function to perform Warp disconnect
 
 # Function to perform CIE login
@@ -33,3 +33,4 @@ cie_login() {
     for username in {1..51}; do
         cie_login "CIE$(printf "%02d" $username)"
     done
+warp-cli connect    
