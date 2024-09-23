@@ -16,9 +16,9 @@ This repository contains a script designed for automated login into PES-Universi
    git clone https://github.com/aryan-212/PESU_AutoLogin.git
    cd PESU_AutoLogin
    ```
-   [IMP] Add this in your Powershell userprofile or execute it each time:
+   *[IMPORTANT]* Run this in an elevated Powershell
    ```powershell  
-   Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+   Set-ExecutionPolicy -Scope LocalMachine -ExecutionPolicy Bypass -Force
    ```
 
 ## Usage
