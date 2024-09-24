@@ -81,7 +81,7 @@ $cie_login_url = "https://192.168.254.1:8090/login.xml"
 $cie_password = "pesu@2020"
 
 # Set the URL and password for PES1UG19CS login
-$pes_login_url = "http://192.168.254.1:8090"
+$pes_login_url = "https://192.168.254.1:8090"
 
 # Define ANSI color codes
 $green = [char]27 + "[0;32m"
