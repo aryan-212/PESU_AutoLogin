@@ -3,7 +3,7 @@
 # Get the current hour
 
 # Set the URL and password for CIE login
-cie_login_url="http://192.168.254.1:8090/login.xml"
+cie_login_url="https://192.168.254.1:8090/login.xml"
 
 # Set the URL and password for PES1UG19CS login
 pes_login_url="http://192.168.254.1:8090/login.xml"
