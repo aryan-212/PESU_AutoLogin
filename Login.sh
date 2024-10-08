@@ -26,11 +26,13 @@ cie_login() {
 
     if [[ "$message" == "<![CDATA[You are signed in as {username}]]>" ]]; then
         echo -e "${green}Successfully connected to $username${reset}"  # Print the username
+        exit 0
     else
         echo -e "${yellow}Trying username $username${reset}"
     fi
 }
     for username in {1..51}; do
         cie_login "CIE$(printf "%02d" $username)"
+        sleep 0.25
     done
 warp-cli connect    
